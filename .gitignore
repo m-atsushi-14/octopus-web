@@ -1,5 +1,7 @@
 node_modules/
 .claude/settings.local.json
+# 内部の設計メモは公開リポジトリに含めない（ローカルのみ）
+docs/
 .DS_Store
 Thumbs.db
 *.log
