@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Web予約｜8パス OCTOPUS</title>
+<meta name="description" content="8パスのWeb予約。メニューと担当を選び、空いている日時を選ぶだけ。30秒で予約完了。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%88%9E%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..500&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<header class="nav scrolled" id="nav">
+  <a href="index.html" class="brand">
+    <svg class="mark" viewBox="0 0 64 32" fill="none"><path d="M16 16c0-7 14-7 16 0s16 7 16 0-14-7-16 0-16 7-16 0Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span class="name">8パス<small>OCTOPUS</small></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">トップ</a>
+    <a href="index.html#menu">メニュー</a>
+    <a href="manage.html">予約の確認・変更</a>
+    <a href="index.html#access" class="btn ghost">アクセス</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+</header>
+
+<section class="subhero">
+  <div class="wrap">
+    <span class="eyebrow">Online Booking</span>
+    <h1>Web予約</h1>
+    <p>メニューと担当を選び、空いている日時を選ぶだけ。最後に連絡先を入力して完了です。</p>
+  </div>
+</section>
+
+<main class="app-main">
+  <div class="wrap">
+
+    <div class="steps-bar" id="stepsBar">
+      <div class="s" data-step="1"><b>1</b>メニュー</div><span class="sep"></span>
+      <div class="s" data-step="2"><b>2</b>担当</div><span class="sep"></span>
+      <div class="s" data-step="3"><b>3</b>日時</div><span class="sep"></span>
+      <div class="s" data-step="4"><b>4</b>お客様情報</div>
+    </div>
+
+    <!-- STEP 1: menu -->
+    <section class="panel" data-panel="1">
+      <h2 class="mincho" style="font-size:1.5rem;margin-bottom:8px">メニューを選ぶ</h2>
+      <p style="color:var(--ink-soft);margin-bottom:26px">気になるメニューをお選びください。当日、状態に合わせて調整します。</p>
+      <div class="opt-grid" id="menuGrid"></div>
+      <div class="app-actions">
+        <a href="index.html" class="btn text">← トップに戻る</a>
+        <button class="btn dark" id="next1" disabled>次へ：担当を選ぶ →</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: staff -->
+    <section class="panel" data-panel="2">
+      <h2 class="mincho" style="font-size:1.5rem;margin-bottom:8px">担当トレーナーを選ぶ</h2>
+      <p style="color:var(--ink-soft);margin-bottom:26px">指名なしでもOK。空いているトレーナーがご対応します。</p>
+      <div class="opt-grid" id="staffGrid"></div>
+      <div class="app-actions">
+        <button class="btn text" data-back="1">← メニューに戻る</button>
+        <button class="btn dark" id="next2" disabled>次へ：日時を選ぶ →</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: date & time -->
+    <section class="panel" data-panel="3">
+      <h2 class="mincho" style="font-size:1.5rem;margin-bottom:8px">日時を選ぶ</h2>
+      <p style="color:var(--ink-soft);margin-bottom:26px">カレンダーから日付を選ぶと、空き時間が表示されます。</p>
+      <div class="cal-wrap">
+        <div class="cal">
+          <div class="cal-head">
+            <button id="prevM" aria-label="前の月">‹</button>
+            <span class="m" id="calMonth"></span>
+            <button id="nextM" aria-label="次の月">›</button>
+          </div>
+          <div class="cal-dows"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+        <div class="slots-box">
+          <h3 id="slotTitle">日付を選んでください</h3>
+          <p class="hint" id="slotHint">10:00〜20:00 / 完全予約制</p>
+          <div class="slots" id="slots"></div>
+        </div>
+      </div>
+      <div class="app-actions">
+        <button class="btn text" data-back="2">← 担当に戻る</button>
+        <button class="btn dark" id="next3" disabled>次へ：お客様情報 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: details -->
+    <section class="panel" data-panel="4">
+      <div class="cal-wrap">
+        <div>
+          <h2 class="mincho" style="font-size:1.5rem;margin-bottom:8px">お客様情報</h2>
+          <p style="color:var(--ink-soft);margin-bottom:26px">ご予約の確認のためにご入力ください。</p>
+          <form id="custForm">
+            <div class="field"><label>お名前 <span class="req">*</span></label><input name="name" required placeholder="森本 敦" /></div>
+            <div class="field"><div class="row2">
+              <div><label>電話番号 <span class="req">*</span></label><input name="tel" required inputmode="tel" placeholder="090-1234-5678" /></div>
+              <div><label>メールアドレス</label><input name="email" type="email" placeholder="you@example.com" /></div>
+            </div></div>
+            <div class="field"><label>紹介者のお名前（任意）</label><input name="referrer" placeholder="ご紹介者がいれば割引対象に" /></div>
+            <div class="field"><label>ご要望・気になる部位（任意）</label><textarea name="note" rows="3" placeholder="最近、肩と腰が特に…"></textarea></div>
+          </form>
+        </div>
+        <aside>
+          <div class="summary">
+            <h3>ご予約内容</h3>
+            <dl id="sumList"></dl>
+            <div class="total"><span>お支払い目安</span><b id="sumTotal">¥0</b></div>
+          </div>
+        </aside>
+      </div>
+      <div class="app-actions">
+        <button class="btn text" data-back="3">← 日時に戻る</button>
+        <button class="btn lg" id="confirmBtn">この内容で予約する ∞</button>
+      </div>
+    </section>
+
+    <!-- DONE -->
+    <section class="panel" data-panel="5">
+      <div class="done-card">
+        <div class="check">✓</div>
+        <h2>ご予約ありがとうございます</h2>
+        <p style="color:var(--ink-soft)">確認のご連絡を担当よりお送りします。当日お会いできるのを楽しみにしています。</p>
+        <div class="code" id="doneCode">OCT-0000</div>
+        <div class="recap"><dl id="doneRecap"></dl></div>
+        <div class="hero-cta" style="justify-content:center">
+          <a href="manage.html" class="btn">予約を確認・変更する →</a>
+          <a href="index.html" class="btn ghost" style="color:var(--ink)">トップへ戻る</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/booking.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

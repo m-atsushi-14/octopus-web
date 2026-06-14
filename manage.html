@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>予約の確認・変更｜8パス OCTOPUS</title>
+<meta name="description" content="8パスのマイページ。予約の確認・日時の変更（組み替え）・キャンセルがWebで完結します。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%88%9E%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..500&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<header class="nav scrolled" id="nav">
+  <a href="index.html" class="brand">
+    <svg class="mark" viewBox="0 0 64 32" fill="none"><path d="M16 16c0-7 14-7 16 0s16 7 16 0-14-7-16 0-16 7-16 0Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span class="name">8パス<small>OCTOPUS</small></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">トップ</a>
+    <a href="index.html#menu">メニュー</a>
+    <a href="reserve.html" class="btn">Web予約 →</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+</header>
+
+<section class="subhero">
+  <div class="wrap">
+    <span class="eyebrow">My Page</span>
+    <h1>予約の確認・変更</h1>
+    <p>日時の変更（組み替え）も、キャンセルも、ここから数タップで。LINEでのやり取りは、もう必要ありません。</p>
+  </div>
+</section>
+
+<main class="app-main">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+      <h2 class="mincho" style="font-size:1.5rem">ご予約一覧</h2>
+      <a href="reserve.html" class="btn">＋ 新しく予約する</a>
+    </div>
+    <div class="res-list" id="resList"></div>
+  </div>
+</main>
+
+<!-- RESCHEDULE MODAL -->
+<div class="modal-back" id="modalBack">
+  <div class="modal" role="dialog" aria-modal="true">
+    <h3 id="mTitle">日時を変更する</h3>
+    <p class="sub" id="mSub"></p>
+    <div class="cal" style="margin-bottom:18px">
+      <div class="cal-head">
+        <button id="mPrev" aria-label="前の月">‹</button>
+        <span class="m" id="mMonth"></span>
+        <button id="mNext" aria-label="次の月">›</button>
+      </div>
+      <div class="cal-dows"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
+      <div class="cal-grid" id="mGrid"></div>
+    </div>
+    <div class="slots-box">
+      <h3 id="mSlotTitle" style="font-size:1rem">日付を選んでください</h3>
+      <div class="slots" id="mSlots" style="margin-top:12px"></div>
+    </div>
+    <div class="app-actions">
+      <button class="btn text" id="mCancel">閉じる</button>
+      <button class="btn dark" id="mSave" disabled>この日時に変更する</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/manage.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
