@@ -3,10 +3,9 @@ window.OCTO = (function () {
   const KEY = 'octo_reservations_v1';
 
   const MENUS = [
-    { id: 'm1', name: 'パーソナルストレッチ', min: 60, price: 11000, desc: '全身をていねいにほぐす基本の施術' },
-    { id: 'm2', name: 'デスクワーク集中ケア', min: 60, price: 12000, desc: '肩・首・肩甲骨まわりを重点的に' },
-    { id: 'm3', name: 'フルメンテナンス', min: 90, price: 13000, desc: '全身＋気になる部位をじっくり' },
-    { id: 'm4', name: 'はじめてのカウンセリング体験', min: 50, price: 10000, desc: '体の状態を確認しながらお試し（初回限定）' },
+    { id: 'm1', name: '全身ストレッチ 60分', min: 60, price: 9000, desc: '短時間でしっかりリセット' },
+    { id: 'm2', name: '全身ストレッチ 80分', min: 80, price: 11000, desc: '8パスの基本コース（人気）' },
+    { id: 'm3', name: '全身ストレッチ 100分', min: 100, price: 13000, desc: '時間をかけて隅々まで' },
   ];
 
   const STAFF = [
